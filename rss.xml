@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog RSS Feed]]></title><description><![CDATA[Gatsby Starter Blog RSS Feed]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 09 Dec 2023 17:22:00 GMT</lastBuildDate><item><title><![CDATA[AWS Lambda로 비용 92% 줄이기]]></title><description><![CDATA['서버리스' 라는 개념을 몰랐다. 서비스가 요청을 처리하기 위해서는 서버가 상시 열려 있는 것이 당연했다. 입사 후 얼마되지 않아 서버리스를 처음 알게되었다. S3에 업로드 된 최대 200개의 pdf 파일과 이미지, 그 외 사용자의 첨부파일을 zip…]]></description><link>null/Reducing-costs-with-AWS-Lambda/</link><guid isPermaLink="false">null/Reducing-costs-with-AWS-Lambda/</guid><pubDate>Sun, 10 Dec 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&apos;서버리스&apos; 라는 개념을 몰랐다. 서비스가 요청을 처리하기 위해서는 서버가 상시 열려 있는 것이 당연했다.&lt;br&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog RSS Feed]]></title><description><![CDATA[Gatsby Starter Blog RSS Feed]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 10 Dec 2023 14:59:32 GMT</lastBuildDate><item><title><![CDATA[AWS Lambda로 비용 92% 줄이기]]></title><description><![CDATA['서버리스' 라는 개념을 몰랐다. 서비스가 요청을 처리하기 위해서는 서버가 상시 열려 있는 것이 당연했다. 입사 후 얼마되지 않아 서버리스를 처음 알게되었다. S3에 업로드 된 최대 200개의 pdf 파일과 이미지, 그 외 사용자의 첨부파일을 zip…]]></description><link>null/Reducing-costs-with-AWS-Lambda/</link><guid isPermaLink="false">null/Reducing-costs-with-AWS-Lambda/</guid><pubDate>Sun, 10 Dec 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&apos;서버리스&apos; 라는 개념을 몰랐다. 서비스가 요청을 처리하기 위해서는 서버가 상시 열려 있는 것이 당연했다.&lt;br&gt;
 입사 후 얼마되지 않아 서버리스를 처음 알게되었다. S3에 업로드 된 최대 200개의 pdf 파일과 이미지, 그 외 사용자의 첨부파일을 zip 파일로 제공해야 하는 기능이 필요했다. 팀 선배는 이 기능이 자주 사용되는 메인 기능은 아니지만, 동시에 여러 요청이 있을 때 WAS의 부담을 줄이고 자동 스케일업 가능한 람다로 처리하는것이 효율적이라고 말해주었다. 그리고 해당 기능은 지금까지 람다로 서비스하고 있다.&lt;/p&gt;
 &lt;h6&gt;개인 프로젝트에 Lambda를 적용한 이유&lt;/h6&gt;
 &lt;p&gt;서버리스 아키텍쳐를 알게된 이후 가장 와 닿았던 것은 사용한 만큼만 비용을 지불한다는 점이였다.
@@ -66,7 +66,7 @@
       /&gt;
   &lt;/a&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;ELB와 EC2비용이 크다. 무언가 이상하다. 당시에는 하루라도 빨리 서비스를 배포하고 싶었다. &apos;선 구현 후 이해&apos; 도 아닌 &apos;선 구현 끝&apos; 이었다. 외부에서 접속만 되고 잘 돌아가니, 방치해 두었다. 그리곤 점점 낭비가 너무 크다는 들었다. 긴 연휴가 있었고 비용을 줄여보자 결심했다.&lt;/p&gt;
+&lt;p&gt;ELB와 EC2비용이 크다. 무언가 이상하다. 하루라도 빨리 서비스를 배포하고 싶었다. &apos;선 구현 후 이해&apos; 도 아닌 &apos;선 구현 끝&apos; 이었다. 외부에서 접속 되고 잘 돌아가니, 방치해 두었다. 그리곤 점점 낭비가 너무 크다는 들었다. 긴 연휴가 있었고 비용을 줄여보자 결심했다.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
@@ -136,7 +136,7 @@
 &lt;h6&gt;AWS Lambda의 이점&lt;/h6&gt;
 &lt;p&gt;lambda를 선택한 가장 큰 이유는 온디멘드로 가격이 책정되어 사용한 만큼만 비용을 지불할 수 있다는 점이었다. 그리고 두번쨰로 꾸준하지만 트래픽이 많은 서비스가 아니다. 마지막으로 cold start로 발생하는 지연이 서비스 품질을 저해할 수준이 아니었다.&lt;/p&gt;
 &lt;h6&gt;앞으로&lt;/h6&gt;
-&lt;p&gt;가장 남기고 싶었던 지점인데, 스스로에 대한 반성이다. 부끄러운 점이지만 새로운 걸 공부하는 것이 반갑지 않다. 알고 있는 것들로 문제를 해결하길 좋아한다. 하루 또는 일주일 동안 맡겨진 과업들을 정해진 기간내에 끝내는 것에만 급급하다. 어떤 방법으로 개발했을 때 효율적일지 더 나은 방법이 있을지 잘 고민하지 않는다. 업무 외 공부할 시간이 없다고 생각해왔다.&lt;br&gt;
-이 프로젝트 에서만 해도 2년 넘게 기술부채가 쌓여왔고, 알고 있음에도 개선하려고 하지 않았다. 조금 더 관심을 기울였다면 애초에 더 나은 설계를 할 수 있었을 것이다.&lt;br&gt;
+&lt;p&gt;부끄러운 점이지만 새로운 것을 공부하지 않는다. 알고 있는 것들로 문제를 해결하는데 익숙하다. 하루 또는 일주일 동안 맡겨진 과업들을 정해진 기간내에 끝내는 것에만 급급하다. 어떤 방법으로 개발했을 때 효율적일지 더 나은 방법이 있을지 잘 고민하지 않는다. 업무 외 공부할 시간이 없다고 생각했다.&lt;br&gt;
+이 프로젝트만 봐도 2년 넘게 기술부채가 쌓여왔고, 알고 있어도 개선하지 않았다. 조금 더 관심을 기울였다면 애초에 더 나은 설계를 할 수 있었다.&lt;br&gt;
 그나마 위안을 삼는것은 그떄와 지금의 관심사가 달라졌을 것이라는 점이다. 그때엔 개발에만 집중했다면, 지금은 아키텍쳐에도 관심을 갖게 되었다는 것, 더디지만 그때 보다는 지금이 나아졌을 것이라는 점이다.&lt;br&gt;
-같이 일하는 선배가 말해주는 &apos;그냥그런 개발자&apos;로 머물러 있든지 아니면 조금 다른 개발자가 되기 위해 공부하든지&lt;/p&gt;</content:encoded></item></channel></rss>
+새로운 것을 공부하는것에 익숙해져야 겠다. 같이 일하는 선배가 말해주는 &apos;그냥그런 개발자&apos;로 머물러 있든지 아니면 조금 다른 개발자가 되기 위해 공부하든지&lt;/p&gt;</content:encoded></item></channel></rss>
