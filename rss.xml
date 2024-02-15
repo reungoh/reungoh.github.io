@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog RSS Feed]]></title><description><![CDATA[Gatsby Starter Blog RSS Feed]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 13 Feb 2024 17:53:36 GMT</lastBuildDate><item><title><![CDATA[load, ngOnInit 의 호출 순서]]></title><description><![CDATA[단순한 문제였는데, 몇시간을 좀 헤맸다. 결론은 window 의 onLoad 이벤트는 가장 나중에 실행된다. 팀내에서는 앵귤러로 UI…]]></description><link>null/load-event-and-ngOninit/</link><guid isPermaLink="false">null/load-event-and-ngOninit/</guid><pubDate>Sat, 16 Dec 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;단순한 문제였는데, 몇시간을 좀 헤맸다.&lt;br&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Gatsby Starter Blog RSS Feed]]></title><description><![CDATA[Gatsby Starter Blog RSS Feed]]></description><link>http://github.com/dylang/node-rss</link><generator>GatsbyJS</generator><lastBuildDate>Thu, 15 Feb 2024 00:02:29 GMT</lastBuildDate><item><title><![CDATA[load, ngOnInit 의 호출 순서]]></title><description><![CDATA[단순한 문제였는데, 몇시간을 좀 헤맸다. 결론은 window 의 onLoad 이벤트는 가장 나중에 실행된다. 팀내에서는 앵귤러로 UI…]]></description><link>null/load-event-and-ngOninit/</link><guid isPermaLink="false">null/load-event-and-ngOninit/</guid><pubDate>Sat, 16 Dec 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;단순한 문제였는데, 몇시간을 좀 헤맸다.&lt;br&gt;
 결론은 &lt;b&gt;window 의 onLoad 이벤트는 가장 나중에 실행된다.&lt;/b&gt;&lt;/p&gt;
 &lt;p&gt;팀내에서는 앵귤러로 UI를 개발하고 있다.
 새로운 윈도우를 띄워서 보여주어야 할 화면이 있었다.
@@ -82,7 +82,7 @@ childWindow&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;spa
 메세지를 받는 코드의 시점을 두고 헤맸던 것이다.&lt;/p&gt;
 &lt;p&gt;조금더 기본에 충실하고, 공식문서를 꼼꼼이 읽자&lt;/p&gt;</content:encoded></item><item><title><![CDATA[AWS Lambda로 비용 92% 줄이기]]></title><description><![CDATA['서버리스' 라는 개념을 몰랐다. 서비스가 요청을 처리하기 위해서는 서버가 상시 열려 있는 것이 당연했다. 입사 후 얼마되지 않아 서버리스를 처음 알게되었다. S3에 업로드 된 최대 200개의 pdf 파일과 이미지, 그 외 사용자의 첨부파일을 zip…]]></description><link>null/Reducing-costs-with-AWS-Lambda/</link><guid isPermaLink="false">null/Reducing-costs-with-AWS-Lambda/</guid><pubDate>Sun, 10 Dec 2023 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&apos;서버리스&apos; 라는 개념을 몰랐다. 서비스가 요청을 처리하기 위해서는 서버가 상시 열려 있는 것이 당연했다.&lt;br&gt;
 입사 후 얼마되지 않아 서버리스를 처음 알게되었다. S3에 업로드 된 최대 200개의 pdf 파일과 이미지, 그 외 사용자의 첨부파일을 zip 파일로 제공해야 하는 기능이 필요했다. 팀 선배는 이 기능이 자주 사용되는 메인 기능은 아니지만, 동시에 여러 요청이 있을 때 WAS의 부담을 줄이고 자동 스케일업 가능한 람다로 처리하는것이 효율적이라고 말해주었다. 그리고 해당 기능은 지금까지 람다로 서비스하고 있다.&lt;/p&gt;
-&lt;h6&gt;개인 프로젝트에 Lambda를 적용한 이유&lt;/h6&gt;
+&lt;h6&gt;프로젝트에 Lambda를 적용한 이유&lt;/h6&gt;
 &lt;p&gt;서버리스 아키텍쳐를 알게된 이후 가장 와 닿았던 것은 사용한 만큼만 비용을 지불한다는 점이였다.
 2020년 12월 부터 운영중인 개인 프로젝트가 있는데, 프리티어 기간을 이용해 1년씩 유지해오다 과금이 되기 시작할 때엔 매달 34달러 정도가 청구되었다. 이마저도 DB는 AWS의 다른계정에 프리티어를 이용했다. 지도 위에서 철봉의 위치를 등록하고 조회하는 간단한 서비스이다. 제법 사용자들이 많고 블로그나 카페, 커뮤니티에서도 꽤 언급된다. 서비스를 종료하기엔 아쉬웠다.&lt;/p&gt;
 &lt;p&gt;&lt;span
@@ -214,11 +214,9 @@ childWindow&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;spa
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;적용후 청구금액은 6.9 달러로 줄었다. 여기에 WAF와 삭제하지 않은 EC2비용이 포함되었는데 지금은 WAF를 사용하지 않고, EC2인스턴스를 완전히 삭제했다. 다음달 예상비용은 2.5 달러 내외로 예상되며
 처음 청구되던 34 달러와 비교해 무려 92% 의 비용이 줄었다.&lt;br&gt;
-앞으로도 서비스를 종료할 생각은 없고, 월 4만5천원, 연 50만원이 넘는 금액이었는데, 이젠 한달에 커피 한잔 값으로 서비스를 유지할 수 있다. 너무 기뻤다. 아동 한명을 더 후원할 수 있는 금액이다.&lt;/p&gt;
+앞으로도 서비스를 종료할 생각은 없고, 월 4만5천원, 연 50만원이 넘는 금액이었는데, 이젠 한달에 커피 한잔 값으로 서비스를 유지할 수 있다. 너무 기뻤다.&lt;/p&gt;
 &lt;h6&gt;AWS Lambda의 이점&lt;/h6&gt;
 &lt;p&gt;lambda를 선택한 가장 큰 이유는 온디멘드로 가격이 책정되어 사용한 만큼만 비용을 지불할 수 있다는 점이었다. 그리고 두번쨰로 꾸준하지만 트래픽이 많은 서비스가 아니다. 마지막으로 cold start로 발생하는 지연이 서비스 품질을 저해할 수준이 아니었다.&lt;/p&gt;
 &lt;h6&gt;앞으로&lt;/h6&gt;
-&lt;p&gt;부끄러운 점이지만 새로운 것을 공부하지 않는다. 알고 있는 것들로 문제를 해결하는데 익숙하다. 하루 또는 일주일 동안 맡겨진 과업들을 정해진 기간내에 끝내는 것에만 급급하다. 어떤 방법으로 개발했을 때 효율적일지 더 나은 방법이 있을지 잘 고민하지 않는다. 업무 외 공부할 시간이 없다고 생각했다.&lt;br&gt;
-이 프로젝트만 봐도 2년 넘게 기술부채가 쌓여왔고, 알고 있어도 개선하지 않았다. 조금 더 관심을 기울였다면 애초에 더 나은 설계를 할 수 있었다.&lt;br&gt;
-그나마 위안을 삼는것은 그떄와 지금의 관심사가 달라졌을 것이라는 점이다. 그때엔 개발에만 집중했다면, 지금은 아키텍쳐에도 관심을 갖게 되었다는 것, 더디지만 그때 보다는 지금이 나아졌을 것이라는 점이다.&lt;br&gt;
-새로운 것을 공부하는것에 익숙해져야겠다. 같이 일하는 선배가 말해주는 &apos;그냥그런 개발자&apos;로 머물러 있든지 아니면 조금 다른 개발자가 되기 위해 공부하든지&lt;/p&gt;</content:encoded></item></channel></rss>
+&lt;p&gt;처음부터 조금 더 관심을 기울였다면 애초에 더 나은 설계를 할 수 있지 않았을까 아쉬움이 남는다. 할 줄 아는 것에서만 방법을 찾지 말고,
+적정기술을 사용하고 기술부채를 줄이자&lt;/p&gt;</content:encoded></item></channel></rss>
